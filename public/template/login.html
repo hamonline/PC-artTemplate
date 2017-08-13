@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>到位APP - 高品质上门服务直约平台，家政服务，上门按摩，上门维修，搬家，安心到家！</title>
+	<link rel="shortcut icon" type="text/css" href="http://www.daoway.cn/pcimages/favicon.png">
+	<link rel="shortcut icon" type="text/css" href="../img/favicon.png">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div>
+	<div class="container">
+    <div class="login">
+      <div class="content">
+        <h2>到位商家后台</h2>
+        <form  name="forms" id="loginForm">
+        	<div class="input-group">
+			      <span class="input-group-addon icon-1"><i class="glyphicon glyphicon-user "></i></span>
+			      <input type="text" name="username" class="form-control" id="username" placeholder="输入手机号">
+			    </div>
+			    <div class="input-group">
+			      <span class="input-group-addon icon-2"><i class="glyphicon glyphicon-lock "></i></span>
+			      <input type="password" name="password" class="form-control"  id="password" placeholder="输入密码">
+			    </div>
+        </form>
+        <br>
+      </div>
+      <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+      <!--  -->
+        <button type="button" class="close">
+          <span aria-hidden="true">×</span>
+        </button>
+   		</div>
+      <!--注册登陆开始-->
+      <div class="regist">
+     		<button id="btnLogin" class="btn btn-primary btn-lg btn-block">登录</button>
+    	</div>
+      <div class="btnSign">
+        <a class="pull-left" id="forget" href="/template/pwd.html">忘记密码</a>
+        <a class="pull-right" href="/template/regist.html">注册</a>
+      </div>
+        <!--注册登陆结束-->
+    </div>
+	</div>
+</div>
+
+<script src="../js/jquery-1.12.0.min.js"></script>
+<!--表单验证-->
+<script src='../js/jquery.validate.js'></script>
+<script>
+//	表单验证
+  $("#loginForm").validate({
+    rules: {
+      'username': {
+        required: true,
+      },
+      'password': {
+        required: true
+      }
+    },
+    messages: {
+      'username': {
+        required: "手机号不能为空"
+      },
+      'password': {
+        required: "密码不能为空"
+      }
+    },
+		/* 重写错误显示消息方法,以alert方式弹出错误消息 */
+    showErrors: function(errorMap, errorList) {
+      var msg = [];
+      $.each( errorList, function(i,v){
+        // msg += (v.message+"\r\n");
+        msg.push(v.message)
+      });
+      if(msg!=""){
+        alert(msg[0]);
+      }
+    },
+		/* 失去焦点时不验证 */
+    onfocusout: false
+  });
+
+//  手机号正则验证
+//$('#username').blur()
+//  登录
+	$('#btnLogin').click(function (e) {
+
+		e.preventDefault();
+//
+    let password = $('#password').val().trim()
+    let username = $('#username').val().trim()
+		if(!password||!username){
+      alert("用户名或密码不能为空！")
+		}else{
+      //    var students = localStorage.getItem("students");//取回students变量
+//    students = JSON.parse(students);//把字符串转换成JSON对象
+//      let user = localStorage.getItem('user')
+			let user = localStorage.getItem(username)
+      user = JSON.parse(user)
+      console.log(user)
+//    let pwd = user.pwd
+
+      if(user){
+        if(user.pwd===password && user.tel===username){
+          alert('恭喜用户'+user.tel+'登录成功')
+          window.location.href = '/index.html'
+//					向本地存储 存储一个已经登录的状态  1 0为未登录
+//					localStorage.setItem("logId",1)
+//				登录成功 发送ajax请求 将其id保存到服务器
+          $.post('/login',{id:user.tel},function(msg){
+            console.log(msg)
+          })
+        }else {
+          alert('用户名或密码输入错误！')
+        }
+      }else {
+        alert('用户没有注册，请先注册~~~')
+//        window.location.href = '/template/regist.html'
+      }
+		}
+
+//    let tel = user.tel
+//    let _id = user.id
+
+
+
+
+  })
+
+//	忘记密码
+	$('#forget').click(function () {
+//	  console.log(111)
+		localStorage.removeItem('user')
+  })
+</script>
+</body>
+</html>

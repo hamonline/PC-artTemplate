@@ -1,0 +1,239 @@
+<style type="text/css">
+    /*底部服务*/
+    .serve{
+      text-align: center;
+      width: 100%;
+      padding-top: 60px;
+      background-color: #fff;
+      clear: both;/* 清除后面两侧的浮动元素 */
+    }
+    .serve h2{
+      font-size: 30px;
+      font-family: 'Microsoft';
+      font-weight: 800;
+      font-size: 30px;
+    }
+    .serve h2 i {
+      color: #fb474f;
+    }
+    .serve p {
+      font-size: 22px;
+      color: #3d3838;
+      margin: 0;
+    }
+    .serve-detail{
+      width: 100%;
+      padding-top: 20px;
+      background-color: #fff;
+      height: 50px;
+      font-family: "Microsoft";
+    }
+    .serve-detail ul {
+      width:420px;
+      margin: 0 auto;
+    }
+    .serve-detail ul li {
+      width: 33%;
+      float: left;
+      text-align:center;
+      color: #1d1515;
+      font-size: 18px;
+    }
+    .serve-detail ul li img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    /*底部详情*/
+    .cities{
+      width: 100%;
+      clear: both;
+      padding-top: 50px;
+      height: 170px;
+      background-color: #fff;
+    }
+    .cities dl{
+      width: 1200px;
+      margin:0 auto;
+    }
+    .cities dl dt {
+      float: left;
+      font-family: 'Microsoft';
+      font-size: 18px;
+    }
+    .cities dl dd {
+      margin-left: 30px;
+      width: 1090px;
+      line-height: 30px;
+      float: left;
+    }
+    .cities dl dd i {
+      font-size: 16px;
+      color: #898989;
+      display: inline-block;
+      width: 9%;
+      text-align: center;
+      font-weight: 200;
+      cursor: pointer;
+      font-family: 'Microsoft';
+    }
+    .copy {
+      width: 100%;
+      /*height: 150px;*/
+      text-align: center;
+      padding-top: 50px;
+    }
+    .cooperate{
+      position: relative;
+      bottom: 20px;
+      text-align: left;
+      font-weight: bold;
+      width: 1200px;
+      margin:0 auto;
+      color: #1d1515;
+      font-size: 18px;
+    }
+    .supports{
+      width: 1200px;
+      margin:0 auto;
+      /*开启BFC*/
+      overflow: hidden;
+    }
+    .supports li{
+      float: left;
+      width: 10%;
+      height: 60px;
+      text-align: center;
+      background-color: #fff;
+      margin-left:1%;
+      line-height: 55px;
+    }
+    .supports li:first-child{
+      margin: 0;
+    }
+    .supports li img{
+      width: 100px;
+      height: auto;
+    }
+    /*匹配的是ul的父元素下子元素第三个子元素*/
+    .copy ul:nth-child(3){
+      padding-top: 20px;
+      clear: both;
+    }
+    /*版权*/
+    .copyBottom{
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      padding-top: 0;
+      text-align: center;
+    }
+    .copyBottom p{
+      width: 1200px;
+      margin:0 auto;
+      text-align: center;
+      /*text-align: left;*/
+      color:#898989;
+    }
+  </style>
+
+<div class="serve">
+  <h2>到位<i>服务</i>保障</h2>
+  <p>到位平台担保交易安全，交易未成功100%退款</p>
+</div>
+<div class="serve-detail">
+  <ul>
+    <li>
+      <img src="/img/anquan.jpg" alt="">
+      优选服务
+    </li>
+    <li>
+      <img src="/img/anquan.jpg" alt="">
+      全程保障
+    </li>
+    <li>
+      <img src="/img/anquan.jpg" alt="">
+      安全无忧
+    </li>
+  </ul>
+</div>
+<!-- 底部详情 -->
+<div class="footerCont">
+  <!-- 热门城市 -->
+  <div class="cities">
+    <!-- 自定义列表 -->
+    <dl>
+      <dt>热门城市</dt>
+      <dd>
+        <i>北京</i><i>上海</i><i>广州</i><i>深圳</i><i>成都</i><i>天津</i><i>南京</i><i>杭州</i><i>重庆</i><i>苏州</i><i>武汉</i><i>长沙</i><i>济南</i><i>郑州</i><i>西安</i><i>沈阳</i><i>福州</i><i>厦门</i><i>南昌</i><i>合肥</i><i>宁波</i><i>无锡</i><i>青岛</i><i>大连</i><i>东莞</i><i>佛山</i><i>石家庄</i><i>哈尔滨</i><i>太原</i><i>昆明</i><i>贵阳</i><i>南宁</i><i>温州</i>
+      </dd>
+    </dl>
+  </div>
+  <!-- 合作伙伴 -->
+  <div class="copy">
+    <p class="cooperate">合作伙伴</p>
+    <ul class="supports">
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+    </ul>
+    <ul class="supports">
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+      <li onclick="link()">
+        <img src="/img/shangjia/guanjia.jpg" alt="">
+      </li>
+    </ul>
+  </div>
+  <!-- 版权 -->
+  <div class="copyBottom">
+    <p>©2015 版权所有  到位 daoway.com 京ICP备15001471号-1 北京邻家科技有限公司</p>
+  </div>
+</div>
+</div>

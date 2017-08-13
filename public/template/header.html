@@ -1,0 +1,248 @@
+
+<style type="text/css">
+  .fixHead{
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    /*display: none;*/
+  }
+  #header .navbar {
+    font:16px/1.5 latoregular, Verdana, sans-serif
+  }
+  .navbar{
+    border: 0;
+    margin: 0;
+    z-index: 999;
+    padding: 3px 0;
+  }
+  .navbar-default{
+    background-color: rgba(255,255,255,.96);
+  }
+  /*.navbar.navbar-defalut.navbar-transprent{
+    box-shadow: none;
+    -webkit-box-shadow:none;
+  }*/
+  .container{
+    width: 1200px;
+    margin:0 auto;
+  }
+  .navbar-header{
+    position: relative;
+  }
+  .navbar-header .navbar-brand{
+    padding: 0;
+  }
+  .navbar-brand{
+    height: 65px;
+    /*padding: 18px 20px 18px 15px;*/
+    font-size: 40px;
+    line-height: 29px;
+    font-family: latobold, sans-serif;
+  }
+  .navbar > .container .navbar-brand{
+    margin-left: 0;
+    color: #efefef;
+  }
+  .navbar-brand{
+    float: left;
+  }
+  .navbar-brand.navbar-brand-img img{
+    margin-top: 13px;
+  }
+  .img-responsive{
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+  }
+  /*导航列表*/
+  #main-menu{
+    margin-left: 0;
+  }
+  .navbar-default .navbar-collapse{
+    margin-top: 10px;
+  }
+  .nav>li{
+    margin: 0;
+  }
+  #navbar-nav li a{
+    outline: none;
+    color:#121212;
+    font-weight: bold;
+    line-height: 20px;
+  }
+  #navbar-nav li a:hover{
+    color:#e94840;
+  }
+  #position{
+    margin-right: 50px;
+  }
+  /*#navbar-nav #position a:hover{
+    color: #000;
+  }*/
+  #navbar-nav li a{
+    background-color: transparent;
+  }
+  #position img{
+    width: 20px;
+    height: auto;
+  }
+  #showCity{
+    color: #000;
+    margin-right: 5px;
+  }
+  #navbar-nav li a#seller{
+    background: #e94840;
+    color: #fff;
+    border-radius: 5px;
+    margin-left:15px;
+    margin-top:10px;
+    padding: 4px 6px ;
+  }
+  /*导航动画*/
+  .navbar-default.navbar-transparent.navbar-fixed-top {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .12);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .12);
+  }
+  .fixed-animated {
+
+    -webkit-animation-name: fixedHeader;
+
+    animation-name: fixedHeader;
+
+    -webkit-animation-duration: .8s;
+
+    animation-duration: .8s;
+
+    -webkit-transform-origin: center top;
+
+    -ms-transform-origin: center top;
+
+    transform-origin: center top
+
+  }
+
+  .fixed-animated {
+    -webkit-animation-name: fixedHeader;
+    animation-name: fixedHeader;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-transform-origin: center top;
+    -ms-transform-origin: center top;
+    transform-origin: center top;
+    /*animation: fixedHeader .8s;*/
+  }
+  @keyframes fixedHeader{
+    0% {
+      opacity: 0;
+      transform: rotateX(100deg);
+      -webkit-transform: rotateX(100deg);
+      -moz-transform: rotateX(100deg);
+      -ms-transform: rotateX(100deg);
+      -o-transform: rotateX(100deg);
+    }
+    100%{
+      opacity: 1;
+      transform: rotateX(0);
+      -webkit-transform: rotateX(0);
+      -moz-transform: rotateX(0);
+      -o-transform: rotateX(0);
+      -ms-transform: rotateX(0);
+    }
+  }
+  @-webkit-keyframes fixedHeader{
+    0% {
+      opacity: 0;
+      transform: rotateX(100deg);
+      -webkit-transform: rotateX(100deg);
+      -moz-transform: rotateX(100deg);
+      -ms-transform: rotateX(100deg);
+      -o-transform: rotateX(100deg);
+    }
+    100%{
+      opacity: 1;
+      transform: rotateX(0);
+      -webkit-transform: rotateX(0);
+      -moz-transform: rotateX(0);
+      -o-transform: rotateX(0);
+      -ms-transform: rotateX(0);
+    }
+  }
+  .navbar-fixed-top {
+    border: none;
+  }
+
+</style>
+<body>
+<!-- 头部 -->
+<header id="header" class="transparent">
+  <div class="sticky-wrap">
+    <nav id='nav' class="navbar navbar-default navbar-transprent">
+      <div class="container">
+        <!-- logo -->
+        <div class="navbar-header">
+          <a class="navbar-brand navbar-brand-img" href="/index.html" >
+            <img class="img-responsive" src="/img/logo.png" alt="logo">
+          </a>
+        </div>
+        <!-- 导航列表  navbar-collapse 响应式导航-->
+        <div class="collapse navbar-collapse navbar-right" id="main-menu">
+          <ul class="nav navbar-nav" id='navbar-nav'>
+            <li id='position'>
+              <a href="/template/position.html">
+                <img src="/img/citypoint.png" alt="" ><!----><i id="showCity">北京</i><!----><i id="city">切换城市</i>
+              </a>
+            </li>
+            <li class="active">
+              <a href="/index.html">首页</a>
+            </li>
+            <li>
+              <a href="/template/downloadAPP.html">下载APP</a>
+            </li>
+            <li>
+              <a href="/template/service.html">服务商</a>
+            </li>
+            <li>
+              <a href="/template/information.html">商家入驻</a>
+            </li>
+            <li>
+              <a href="/template/aboutus.html">关于我们</a>
+            </li>
+            <li>
+              <a href="/template/login.html" target="_blank" class="seller" id="seller">商家登录</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+</body>
+<script>
+//用户判断 18302268983相当于 是存储对象的标识id
+  var user = JSON.parse(localStorage.getItem(18302268983))
+  if(user){
+    if(user.tel.length>=4){// 判断是否长度大于等于4
+
+      var str = user.tel.substr(user.tel.length-4) //截取后四位
+      $('#seller').html('**'+str)
+    }
+  }
+
+//  头部动画
+  let $header = $('#header')
+  let $height = $header.height()//70
+  window.onscroll = function(){
+    if ($(document).scrollTop()>=$height) {
+      $('nav').addClass('fixed-animated').addClass(' navbar-fixed-top');
+
+    }else{
+      $('nav').removeClass('fixed-animated').removeClass(' navbar-fixed-top');
+    }
+  }
+
+  //		 切换城市地址 读取本地locationStorage城市名
+  let cityName = localStorage.getItem('city') === null ? '北京':localStorage.getItem('city')
+  $('#showCity').text(cityName)
+</script>

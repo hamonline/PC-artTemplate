@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>到位APP - 高品质上门服务直约平台，家政服务，上门按摩，上门维修，搬家，安心到家！</title>
+	<link rel="shortcut icon" type="text/css" href="http://www.daoway.cn/pcimages/favicon.png">
+	<link rel="shortcut icon" type="text/css" href="../img/favicon.png">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/regist.css">
+</head>
+<body>
+<div>
+	<div class="container">
+    <form id="registForm">
+      <div class="regist">
+        <div class="content">
+          <h2>注册</h2>
+          <div class="control-group">
+            <div class="input">
+              <input class="form-control" id="userName" maxlength="11" name="username" type="text" placeholder="请输入手机号">
+
+              <div class="input-group">
+                <!--<img id="v_container" src="../img/code.jpg">-->
+                <!--验证码图片-->
+                <div id="v_container" class="v_container" style="height: 60px;border-radius: 3px;"></div>
+
+                <input type="text" class="form-control" id="code_input" style="height: 60px;border-radius: 3px;" name="picnum" maxlength="4"  placeholder="请输入图片中的字符串">
+                <span class="input-group-addon" style="cursor:pointer;border-radius: 5px;" id="getNum" >获取验证码</span>
+                <!--<span class="input-group-addon" style="display:none;" id="showTime">重新发送<i id="time">10</i></span>-->
+              </div>
+              <input type="text" style="margin: 10px 0;" id="code" class="form-control" name="num" maxlength="4" placeholder="请输入验证码">
+              <input class="form-control" type="password" name="pwd" id="pwd" placeholder="请输入密码">
+            </div>
+          </div>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="vehicle" value="Car" checked >
+            <a href="###" target="_Blank">您确认并同意到位用户协议</a>
+          </label>
+        </div>
+        <br>
+        <div class="alert alert-danger alert-dismissible" role="alert" style="display: none;">
+          <!--  -->
+          <button type="button" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <!--注册登陆开始-->
+        <div>
+          <button id="my_button" class="btn btn-primary btn-lg btn-block">注册</button>
+        </div>
+        <div class="btnSign">
+          <a href="/template/login.html">已有账户？登录</a>
+        </div>
+          <!--注册登陆结束-->
+      </div>
+    </form>
+	</div>
+</div>
+<script src="../js/jquery-1.12.0.min.js"></script>
+<!--表单验证-->
+<script src='../js/jquery.validate.js'></script>
+<!--验证码-->
+<script src="../js/gVerify.js"></script>
+<script>
+  $(function(){
+//    $.validator.setDefaults({
+//      //
+//      submitHandler: function() {
+//        // 清空输入框内容
+//        $('input').val('')
+//        alert("提交成功！恭迎您入驻到位平台，商务人员将在3个工作日内与您电话联系，请耐心等待。");return false;
+//
+//      }
+//      // 如果这个参数为true，那么表单不会提交，只进行检查，调试时十分方便
+//      // debug: true
+//    });
+    $("#registForm").validate({
+      rules: {
+        'username': {
+          required: true,
+        },
+        'pwd': {
+          required: true
+        },
+        'num': {
+          required: true
+        },
+        'picnum': {
+          required: true
+        }
+      },
+      messages: {
+        'username': {
+          required: "手机号不能为空"
+        },
+        'pwd': {
+          required: "密码不能为空"
+        },
+        'num': {
+          required: "请输入验证码"
+        },
+        'picnum': {
+          required: "请输入图片中的验证码"
+        },
+      },
+      /* 重写错误显示消息方法,以alert方式弹出错误消息 */
+      showErrors: function(errorMap, errorList) {
+        var msg = [];
+        $.each( errorList, function(i,v){
+          // msg += (v.message+"\r\n");
+          msg.push(v.message)
+        });
+        if(msg!=""){
+          alert(msg[0]);
+        }
+      },
+      /* 失去焦点时不验证 */
+      onfocusout: false
+    });
+
+
+    //验证码倒计时
+    var countdown = 9;
+    var btn = $('#getNum')
+    btn.click(function () {
+      let tel = $('#userName').val()
+//      修改文本显示
+      settime(btn);
+//      发送ajax 验证码发送
+      $.get('/sms',{tel:tel},function (data) {
+        console.log(data)
+      })
+    })
+    function settime(obj) { //发送验证码倒计时
+      if (countdown < 0) {
+        obj.attr('disabled',false);
+        //obj.removeattr("disabled");
+        obj.html("获取验证码");
+        countdown = 9;
+        return;
+      } else {
+        obj.attr('disabled',true);
+        obj.html("重新发送" + countdown + "s");
+        countdown--;
+      }
+      setTimeout(function() {
+//        递归 自己调用自己
+          settime(obj) }
+        ,1000)
+    }
+      //手机号注册过
+//    $('#username').blur(function(){
+//      var val=$(this).val();
+//      $get("/login",{val:val}, function(str){
+//        if(str.msg=='1'){
+//          $('#tishi').html("您输入的用户名已存在，请重新输入");
+//        }
+//      });
+//    });
+//    表单提交
+
+    //  验证码
+    var verifyCode = new GVerify("v_container");
+    var num = $('#code').val().trim()
+    var pwd = $('#pwd').val().trim()
+//        判断用户是否注册
+    $('#userName').blur(function(){
+      var tel = $('#userName').val().trim()
+      var user =JSON.parse(localStorage.getItem(tel))
+      if(user){
+        let _id = user.id
+        console.log(tel)
+        if(_id&&_id === tel){
+          alert('该用户已注册，请去登录')
+          window.location.href = '/template/login.html'
+        }
+      }
+
+    })
+
+//    当图形验证码失焦时 在判断用户是否注册时 事件冲突 所以还是写在提交里
+    //      图形验证码  失焦时验证
+//    $('#code_input').blur(function(){
+////      获取失焦值
+//      var res = verifyCode.validate(document.getElementById("code_input").value);
+////判断是否一致
+//      if(!res){
+//        alert("图形验证错误");
+//      }
+//    })
+
+    $('#my_button').click(function(e){
+      e.preventDefault();//阻止默认提交
+
+//      图形验证
+      var res = verifyCode.validate(document.getElementById("code_input").value);
+//判断是否一致
+      if(!res){
+        alert("图形验证错误");
+      }else{
+        var num = $('#code').val().trim()
+        var pwd = $('#pwd').val().trim()
+        var tel = $('#userName').val().trim()
+        $.post('/regist',{num:num,tel:tel,pwd:pwd},function(data){
+          if(data.type===1){
+            alert('恭喜你！注册成功~')
+            window.location.href = '/template/login.html'
+//            注册成功保存用户名和用户密码
+            let user = {id:tel,tel:tel,pwd:pwd}
+            user = JSON.stringify(user)
+//            localStorage.setItem('tel',tel)
+//            localStorage.setItem(user.id+Math.random()*1,user)
+//            localStorage.setItem('user',user)
+            localStorage.setItem(tel,user)
+//            存储JSON对象
+//            var me = {name:'myname',age:99,gender:'myGender'};
+//            localStorage.setItem("user",me);
+//            console.log(localStorage.getItem("user")); // will return "[object Object]"
+//
+          }else {
+            alert('验证码错误~~~')
+          }
+        })
+      }
+
+
+
+    })
+
+
+
+
+
+
+
+//      var phone = $('#userName').val();
+//      $.ajax({
+//        type: 'post',
+//        url: "/sms",
+//        data: {
+//          phone: phone,
+//          type: 1
+//        },
+//        dataType: 'json',
+//        success: function (result) {
+//          if (result.flag == 1) {
+//// alert('成功');
+////            time(btn);
+//            time(this)
+//          } else {
+//            alert(result.content);
+//          }
+//        }
+//      });
+//    });
+//
+
+
+  })
+
+</script>
+</body>
+</html>
