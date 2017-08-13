@@ -90,36 +90,8 @@ $(document).ready(function(){
 });
 
 
-
-
-
-
-总结：
 1.	本地存储localStorage存储json数据，必须严格json数据规范，否则会报错：1 Uncaught SyntaxError: Unexpected token o in JSON at position 1
 注：谨记json格式问题k和value都加双引号，单引号也不可以先将js对象JSON.stringify(obj)转译成json对象存入，读取本地存储的数据时，再JSON.parse(obj)字符串读取对象
 2………………
 
-
-
-
-
-
-
-
-
-
-
-
-DAOWEI页面：
-黄阿敏： http://192.168.21.21:3000   
-    
-秦钰臻： http://192.168.21.57:3000  
-
-李博文： http://192.168.21.61:3000  
-
-靳  洲： http://192.168.21.27:3000
-
-徐  官： http://192.168.21.62:3000 
-		 
-赵宏伟：请假没来 
 
